@@ -19,6 +19,8 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { scrollbar-gutter: stable; } /* keeps the nav from shifting between pages */
+
 body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
@@ -37,7 +39,6 @@ svg {
 }
 
 :focus-visible { outline: 2px solid var(--muted); outline-offset: 2px; }
-.hero:focus, .section:focus { outline: none; }
 
 /* Top navigation */
 
@@ -75,7 +76,7 @@ svg {
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 92px var(--gutter) 0;
+  padding: 92px var(--gutter) 45px;
   text-align: center;
 }
 
@@ -109,12 +110,7 @@ svg {
 .socials a:hover { background: var(--surface-hover); color: var(--text); }
 .socials svg { width: 24px; height: 24px; }
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-}
+.actions { display: flex; align-items: center; gap: 12px; }
 
 .or { font-size: 14px; color: var(--muted); }
 
@@ -142,20 +138,39 @@ svg {
 .btn-filled:hover { background: var(--surface-hover); }
 .btn svg { width: 16px; height: 16px; color: var(--muted); }
 
-/* Sections */
+/* Revolving logos */
 
-.section {
-  position: relative;
-  width: 100%;
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--gutter);
-  scroll-margin-top: 96px; /* clears the fixed nav */
+.worked { width: 100%; margin-top: 40px; }
+.worked p { margin-bottom: 14px; color: var(--muted); font-size: 14px; }
+
+.logos {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
 }
 
-/* Full-height so clicking "About" can bring it to the top of the screen */
-#newsletter { margin-top: 72px; }
-.about { min-height: calc(100vh - 96px); min-height: calc(100svh - 96px); margin-top: 96px; padding-bottom: 64px; }
+.logos-track { display: flex; width: max-content; }
+.logos ul { display: flex; align-items: center; list-style: none; }
+.logos li { flex: none; padding-right: 52px; line-height: 0; }
+.logos svg { width: auto; height: 22px; stroke: none; }
+.logos .logo-spacex { height: 15px; }
+
+/* Newsletter and About pages: content centered on the screen */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--content-width);
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 92px var(--gutter);
+}
+
+.about { position: relative; }
+.window { display: block; width: 260px; height: auto; margin: 0 auto 32px; }
 .about p { font-size: 15px; }
 .about p + p { margin-top: 20px; }
 .about p a { color: inherit; font-weight: 600; text-underline-offset: 3px; text-decoration-color: var(--muted); }
@@ -170,7 +185,9 @@ svg {
 
 .newsletter { width: 100%; margin: 0 auto; }
 
-.newsletter img {
+.newsletter .cover { display: block; width: 128px; height: 128px; margin: 0 auto 28px; border-radius: 20px; }
+
+.newsletter h1 img {
   display: block;
   width: 100%;
   max-width: 400px;
@@ -227,17 +244,28 @@ svg {
 
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-/* Entrance: text rises in order, then icons pop */
+/* Motion: text rises in order, then icons pop; logos revolve */
 
 @media (prefers-reduced-motion: no-preference) {
   .rise { animation: rise 600ms var(--ease-out) calc(var(--step, 0) * 80ms) backwards; }
+  .logos-track { animation: revolve 40s linear infinite; }
+  .logos:hover .logos-track { animation-play-state: paused; }
   .socials a { animation: pop 600ms var(--ease-bounce) calc(320ms + var(--i) * 50ms) backwards; }
 }
 
 @keyframes rise { from { opacity: 0; transform: translateY(20px); } }
+@keyframes revolve { to { transform: translateX(-50%); } }
 @keyframes pop {
   from { opacity: 0; transform: translateY(12px) scale(0.9); }
   70% { transform: translateY(-2px) scale(1.02); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logos { -webkit-mask-image: none; mask-image: none; }
+  .logos-track { width: auto; justify-content: center; }
+  .logos ul { flex-wrap: wrap; justify-content: center; gap: 20px 32px; }
+  .logos li { padding-right: 0; }
+  .logos ul[aria-hidden] { display: none; }
 }
 
 /* Responsive */
@@ -248,7 +276,7 @@ svg {
 
 @media (max-width: 809px) {
   :root { --content-width: 540px; --gutter: 32px; }
-  .hero { padding-top: 84px; }
+  .hero { padding-top: 84px; padding-bottom: 40px; }
   .name { font-size: 18px; }
   .actions { flex-direction: column; gap: 10px; width: 100%; max-width: 380px; }
   .or { display: none; }
