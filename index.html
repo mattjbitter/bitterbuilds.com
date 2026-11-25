@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matt Bitter – Bitter Builds</title>
+  <meta name="description" content="building things, teaching productivity, and helping gen z realize their brains' potential">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="vendor/holo-card/holo-card.css">
+  <link rel="stylesheet" href="styles.css?v=15">
+  <script src="script.js?v=12" defer></script>
+  <script src="vendor/holo-card/holo-card.js?v=3" type="module"></script>
+</head>
+<body>
+  <nav class="nav" aria-label="Main">
+    <a href="#home" aria-current="true">Home</a>
+    <a href="#newsletter">Newsletter</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <main class="page">
+    <header class="hero" id="home" tabindex="-1">
+      <div class="card rise">
+        <div class="holo-card" role="img" aria-label="Bitterbuilds trading card: 800k+ on Instagram, 100M+ views. Moves: Content maxxing and Yap Video. Weakness: scheduling.">
+          <span class="holo-card__shadow"></span>
+          <div class="holo-card__rotor">
+            <div class="holo-card__face"><img src="assets/card.webp?v=3" alt="" draggable="false"></div>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="name rise" style="--step: 1">Matt Bitter</h1>
+      <p class="tagline rise" style="--step: 2">building things, teaching productivity, and helping gen&nbsp;z realize their brains' potential</p>
+
+      <nav class="socials" aria-label="Social links">
+        <a href="https://x.com/bitterbuilds" target="_blank" rel="me noopener" aria-label="X (Twitter)" style="--i: 0">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+        </a>
+        <a href="https://www.instagram.com/bitterbuilds/" target="_blank" rel="me noopener" aria-label="Instagram" style="--i: 1">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3"/><path d="M16.5 7.5v.01"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@bitterbuilds" target="_blank" rel="me noopener" aria-label="TikTok" style="--i: 2">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@bitterbuilds" target="_blank" rel="me noopener" aria-label="YouTube" style="--i: 3">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="4"/><path d="M10 9l5 3l-5 3z"/></svg>
+        </a>
+        <a href="https://substack.com/@bitterbuilds" target="_blank" rel="me noopener" aria-label="Substack" style="--i: 4">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14M5 8h14M5 12h14v8.5l-7 -4l-7 4z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/matthewjbitter/" target="_blank" rel="me noopener" aria-label="LinkedIn" style="--i: 5">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 1 0 -4 0"/></svg>
+        </a>
+      </nav>
+
+      <!-- "Copy email" copies whatever is in this mailto. -->
+      <div class="actions rise" style="--step: 3">
+        <a class="btn btn-filled" id="emailLink" href="mailto:bitterbuilds@gmail.com">
+          Contact me
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7l-10 -7"/></svg>
+        </a>
+        <span class="or">or</span>
+        <button class="btn" id="copyEmail" type="button">
+          Copy email
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15h-1a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+
+      <!-- Empire State Building. The digits scramble in to whatever is written here. -->
+      <p class="coords">
+        <span>NEW YORK CITY</span><span>·</span><span data-scramble="800">40.7484</span><span>° N,&nbsp;</span><b><span data-scramble="900">73.9857</span><span>° W</span></b>
+      </p>
+    </header>
+
+    <section class="section" id="newsletter" tabindex="-1" aria-label="Newsletter">
+      <!-- beehiiv magic link for counter/productive: opens beehiiv and subscribes the address entered -->
+      <form class="newsletter rise" style="--step: 8" action="https://magic.beehiiv.com/v1/e3fe854d-2c13-4197-8a7b-e487a5791efd" method="get" target="_blank" rel="noopener">
+        <img src="assets/counter-productive.png" width="1344" height="256" alt="counter / productive: how to counter the noise &amp; produce what matters.">
+        <div class="signup">
+          <input type="email" name="email" placeholder="Your email" aria-label="Your email" autocomplete="email" required>
+          <button class="btn btn-cta" type="submit">Sign up for my newsletter</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Draft copy, built from your card, tagline and newsletter. Edit freely. -->
+    <section class="section about" id="about" tabindex="-1">
+      <h2 class="label">About</h2>
+      <p>i'm matt, better known online as bitterbuilds. i build things and make videos about productivity from new york city. 800k+ people follow along on instagram, and the videos have passed 100M views.</p>
+      <p>i also write <a href="#newsletter">counter/productive</a>, a newsletter on how to counter the noise &amp; produce what matters.</p>
+      <p>when i'm not filming, i'm probably still in my room. i can be lured out with food or drink.</p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
