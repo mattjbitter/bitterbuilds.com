@@ -52,28 +52,6 @@ for (const type of ['wheel', 'touchstart', 'keydown']) {
   addEventListener(type, () => cancelAnimationFrame(slide), { passive: true });
 }
 
-// Coordinates: digits scramble, then lock in from left to right
-function scramble(el, duration) {
-  const final = el.textContent;
-  const start = performance.now();
-
-  function frame(now) {
-    const settled = Math.min((now - start) / duration, 1) * final.length;
-    el.textContent = [...final]
-      .map((char, i) => (i < settled || !/\d/.test(char) ? char : Math.floor(Math.random() * 10)))
-      .join('');
-    if (settled < final.length) requestAnimationFrame(frame);
-  }
-
-  requestAnimationFrame(frame);
-}
-
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.querySelectorAll('[data-scramble]').forEach((el) => {
-    setTimeout(() => scramble(el, Number(el.dataset.scramble)), 720);
-  });
-}
-
 // Copy email
 const toast = document.getElementById('toast');
 let toastTimer;
